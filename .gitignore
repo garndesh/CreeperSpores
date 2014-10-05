@@ -1,0 +1,10 @@
+# Ignore everything
+/*
+/*/
+
+# But exclude these files
+!.gitignore
+!build.gradle
+!/src/
+!/recources/
+

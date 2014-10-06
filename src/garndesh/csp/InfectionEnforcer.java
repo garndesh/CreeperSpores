@@ -97,7 +97,7 @@ public class InfectionEnforcer {
 						Thread.sleep(Math.max(infectionFrequency*1000/infectedCount, 100));
 						makePlayerSick(infected.get(key));
 					} else{
-						FMLLog.info("No infected registered waiting a turn for player to get infected");
+						//FMLLog.info("No infected registered waiting a turn for player to get infected");
 						Thread.sleep(infectionFrequency*1000);
 					}
 				} catch(InterruptedException ex){

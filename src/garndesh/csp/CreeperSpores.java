@@ -1,9 +1,13 @@
 package garndesh.csp;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
 import garndesh.csp.blocks.ModBlocks;
 import garndesh.csp.events.EventCreeperExplosion;
 import garndesh.csp.events.EventPlayerInfectionTracker;
+import garndesh.csp.items.ModItems;
 import garndesh.csp.lib.Reference;
 import garndesh.csp.lib.Strings;
 import garndesh.csp.tileentity.TileEntitySpore;
@@ -44,9 +48,14 @@ public class CreeperSpores {
 		
 		//register new blocks
 		ModBlocks.init();
+		//And items
+		ModItems.init();
 		
 		//TileEntity registration
 		GameRegistry.registerTileEntity(TileEntitySpore.class, Strings.TILE_ENTITY_SPORE);
+		
+		//Recipe registration
+		GameRegistry.addShapelessRecipe(new ItemStack(ModItems.itemCureBall, 1), new ItemStack(Items.rotten_flesh), new ItemStack(Items.blaze_powder), new ItemStack(Items.gunpowder), new ItemStack(Blocks.red_mushroom));
 	}
 
 	@EventHandler

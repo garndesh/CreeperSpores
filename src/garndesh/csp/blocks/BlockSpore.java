@@ -63,8 +63,8 @@ public class BlockSpore extends Block implements ITileEntityProvider {
 	@Override
 	public int colorMultiplier(IBlockAccess world, int x, int y, int z){
 		TileEntitySpore te = (TileEntitySpore) world.getTileEntity(x, y, z);
-		if(world.getBlock(x, y, z) == Block.getBlockById(te.getBlockId()) || Block.getBlockById(te.getBlockId()) == Blocks.grass )
+		if(world.getBlock(x, y, z) == Block.getBlockById(te.getBlockId()) || te.getBlockId() ==Block.getIdFromBlock(Blocks.grass) )
 			return Blocks.grass.colorMultiplier(world, x, 1, z);
-		return 0;
+		return Block.getBlockById(te.getBlockId()).colorMultiplier(world, x, y, z);
 	}
 }

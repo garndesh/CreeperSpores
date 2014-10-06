@@ -36,7 +36,8 @@ public class EventCreeperExplosion {
 					if (!world.isAirBlock(x, y, z)
 							&& world.blockExists(x, y, z)
 							&& world.getBlock(x, y, z).isNormalCube()
-							&& Block.getIdFromBlock(ModBlocks.blockSpore) != block) {
+							&& Block.getIdFromBlock(ModBlocks.blockSpore) != block
+							&& world.getTileEntity(x, y, z) == null) {
 						int meta = world.getBlockMetadata(x, y, z);
 						world.setBlock(x, y, z, ModBlocks.blockSpore);
 						world.setBlockMetadataWithNotify(x, y, z, meta, 2);

@@ -1,6 +1,7 @@
 package garndesh.csp.items;
 
 import garndesh.csp.CreeperSpores;
+import garndesh.csp.lib.Constants;
 import garndesh.csp.lib.Strings;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -32,11 +33,23 @@ public class ItemCureBall extends ItemFood {
     {
         if (!world.isRemote)
         {
-            player.addPotionEffect(new PotionEffect(Potion.hunger.id, 2400, 0));
-            player.addPotionEffect(new PotionEffect(Potion.weakness.id, 1200, 0));
-            player.addPotionEffect(new PotionEffect(Potion.poison.id, 600, 0));
-            player.addPotionEffect(new PotionEffect(Potion.regeneration.id, 600, 0));
-            player.getEntityData().setBoolean(Strings.INFECTED_TAG, false);
+        	int badness = Constants.CURE_BADNESS;
+        	float multiplyer = badness/3;
+            player.addPotionEffect(new PotionEffect(Potion.hunger.id, (int) (2400*multiplyer), 0));
+            player.addPotionEffect(new PotionEffect(Potion.weakness.id, (int) (1200*multiplyer), 0));
+            if(badness>=3){
+	            player.addPotionEffect(new PotionEffect(Potion.poison.id, (int) (600*multiplyer), 0));
+	            player.addPotionEffect(new PotionEffect(Potion.regeneration.id, (int) (600*multiplyer), 0));
+            }
+            if(badness>=4){
+	            player.addPotionEffect(new PotionEffect(Potion.digSlowdown.id, (int) (600*multiplyer), 2));
+	            player.addPotionEffect(new PotionEffect(Potion.moveSlowdown.id, (int) (600*multiplyer), 2));
+            }
+            if(badness>=5){
+	            player.addPotionEffect(new PotionEffect(Potion.confusion.id, (int) (600*multiplyer), 0));
+	            player.addPotionEffect(new PotionEffect(Potion.blindness.id, (int) (600*multiplyer), 0));
+            }
+	        player.getEntityData().setBoolean(Strings.INFECTED_TAG, false);
             CreeperSpores.instance.enforcer.removeInfectedPlayer(player);
         }
     }

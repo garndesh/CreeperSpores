@@ -8,6 +8,7 @@ import garndesh.csp.blocks.ModBlocks;
 import garndesh.csp.events.EventCreeperExplosion;
 import garndesh.csp.events.EventPlayerInfectionTracker;
 import garndesh.csp.items.ModItems;
+import garndesh.csp.lib.Constants;
 import garndesh.csp.lib.Reference;
 import garndesh.csp.lib.Strings;
 import garndesh.csp.tileentity.TileEntitySpore;
@@ -37,6 +38,7 @@ public class CreeperSpores {
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		FMLLog.info("Incubating Creeper spores....");
+		Constants.init(event);
 	}
 
 	@EventHandler

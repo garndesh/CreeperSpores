@@ -1,5 +1,6 @@
 package garndesh.csp;
 
+import garndesh.csp.lib.Constants;
 import garndesh.csp.lib.Strings;
 
 import java.util.ArrayList;
@@ -20,11 +21,14 @@ public class InfectionEnforcer {
 	private HashMap<UUID, EntityPlayer> infected = new HashMap<UUID, EntityPlayer>();
 	private Random rand = new Random();
 	private List<UUID> keySet;
-	private static final int infectionFrequency = 10;
-	private static final int debuffDuration = 4;
-	private static final int creeperSpawnFrequency = 20;
+	private int infectionFrequency;
+	private int debuffDuration;
+	private int creeperSpawnFrequency;
 	
 	public InfectionEnforcer(){
+		infectionFrequency = Constants.INFECTION_FREQUENCY;
+		debuffDuration = Constants.DEBUFF_DURATION;
+		creeperSpawnFrequency = Constants.INFECTION_SPAWN_FREQUENCY;
 		new Thread(looper, "InfectionEnforcer").start();
 	}
 	

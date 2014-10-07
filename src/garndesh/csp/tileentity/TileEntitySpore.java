@@ -1,6 +1,7 @@
 package garndesh.csp.tileentity;
 
 import garndesh.csp.blocks.ModBlocks;
+import garndesh.csp.entity.EntityBabyCreeper;
 
 import java.util.Random;
 
@@ -43,11 +44,11 @@ public class TileEntitySpore extends TileEntity {
 			int z = (int) (this.zCoord + rand.nextInt(10)-5);
 			//FMLLog.info("Trying to spawn creeper @ "+x+":"+y+":"+z);
 			if(worldObj.isAirBlock(x, y, z) && worldObj.isAirBlock(x, y+1, z) && !worldObj.isRemote){
-				EntityCreeper creeper = new EntityCreeper(worldObj);
+				EntityBabyCreeper creeper = new EntityBabyCreeper(worldObj);
 				creeper.setLocationAndAngles(x+0.5, y, z+0.5, 0, 0);
 				
 				// The next function disables the despawning of the creeper it is not yet mapped in MCP
-				creeper.func_110163_bv();
+				//creeper.func_110163_bv();
 				creeper.addPotionEffect(new PotionEffect(Potion.resistance.id, 1, 10));
 				//creeper.isChild();
 				worldObj.spawnEntityInWorld(creeper);

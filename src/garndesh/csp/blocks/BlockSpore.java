@@ -67,4 +67,10 @@ public class BlockSpore extends Block implements ITileEntityProvider {
 			return Blocks.grass.colorMultiplier(world, x, 1, z);
 		return Block.getBlockById(te.getBlockId()).colorMultiplier(world, x, y, z);
 	}
+	
+	@Override 
+	 public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float chance, int extra){
+		TileEntitySpore te = (TileEntitySpore) world.getTileEntity(x, y, z);
+		Block.getBlockById(te.getBlockId()).dropBlockAsItemWithChance(world, x, y, z, meta, chance, extra);
+    }
 }

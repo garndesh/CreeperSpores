@@ -6,7 +6,7 @@ import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 public class Constants {
 
 	private static final String INFECTION_SETTINGS = "Infection Settings";
-	private static final int INFECTION_FREQUENCY_DEFAULT = 10;
+	private static final int INFECTION_FREQUENCY_DEFAULT = 60;
 	private static final int DEBUFF_DURATION_DEFAULT = 4;
 	private static final int INFECTION_SPAWN_FREQUENCY_DEFAULT = 20;
 	

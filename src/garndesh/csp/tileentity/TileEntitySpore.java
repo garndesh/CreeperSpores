@@ -22,7 +22,7 @@ public class TileEntitySpore extends TileEntity {
 	private static final String blockIdTag = "blockId";
 	private Random rand = new Random();
 	private int spawned;
-	private int blockId = 0;
+	private int blockId = 1;
 	
 	public TileEntitySpore() {
 		this.spawned = 0;

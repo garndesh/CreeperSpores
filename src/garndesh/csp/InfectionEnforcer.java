@@ -1,5 +1,6 @@
 package garndesh.csp;
 
+import garndesh.csp.entity.EntityBabyCreeper;
 import garndesh.csp.lib.Constants;
 import garndesh.csp.lib.Strings;
 
@@ -10,7 +11,6 @@ import java.util.Random;
 import java.util.UUID;
 
 import cpw.mods.fml.common.FMLLog;
-import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
@@ -78,7 +78,7 @@ public class InfectionEnforcer {
 			int y = ((int) player.posY) + rand.nextInt(10)-5;
 			int z = ((int) player.posZ) + rand.nextInt(10)-5;
 			if(world.isAirBlock(x, y, z)&&world.isAirBlock(x, y+1, z)){
-				EntityCreeper creeper = new EntityCreeper(world);
+				EntityBabyCreeper creeper = new EntityBabyCreeper(world);
 				creeper.setPositionAndRotation(x+0.5, y+0.5, z+0.5, 0, 0);
 				creeper.addPotionEffect(new PotionEffect(Potion.invisibility.id, 2*60*20, 1));
 				world.spawnEntityInWorld(creeper);

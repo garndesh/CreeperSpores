@@ -1,9 +1,10 @@
 package garndesh.csp.entity;
 
+import garndesh.csp.lib.Constants;
+
 import java.util.ArrayList;
 import java.util.List;
 
-import cpw.mods.fml.common.FMLLog;
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAICreeperSwell;
@@ -21,7 +22,6 @@ public class EntityBabyCreeper extends EntityCreeper {
 		EntityAIBase task = null;
 		for(EntityAITaskEntry e : taskList){
 			if(e.action instanceof EntityAIAttackOnCollide || e.action instanceof EntityAICreeperSwell){
-				//FMLLog.info("action found");
 				task = e.action;
 				this.tasks.removeTask(task);
 			}
@@ -30,6 +30,26 @@ public class EntityBabyCreeper extends EntityCreeper {
 		EntityAITaskEntry taskEntry = (EntityAITaskEntry)(this.targetTasks.taskEntries.get(1));
 		this.targetTasks.removeTask(taskEntry.action);
 		this.setSize(0.75F, 0.4F);
+	}
+	
+	@Override
+	public void onUpdate(){
+		super.onUpdate();
+		if(this.ticksExisted >= Constants.CREEPER_CHILD_TIME){
+			tryGrowUp();
+		}
+	}
+	
+	private void tryGrowUp(){
+		int x = (int)this.posX;
+		int y = (int)this.posY;
+		int z = (int)this.posZ;
+		if(this.worldObj.isAirBlock(x, y+1, z)){
+			EntityCreeper creeper = new EntityCreeper(this.worldObj);
+			creeper.setPosition(x+0.5, y+0.5, z+0.5);
+			this.worldObj.spawnEntityInWorld(creeper);
+			this.setDead();
+		}
 	}
 
 }

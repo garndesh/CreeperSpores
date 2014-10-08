@@ -68,9 +68,20 @@ public class BlockSpore extends Block implements ITileEntityProvider {
 		return Block.getBlockById(te.getBlockId()).colorMultiplier(world, x, y, z);
 	}
 	
-	@Override 
+	@Override
+	public void onBlockPreDestroy(World world, int x, int y, int z, int meta){
+		if(!world.isRemote){
+			TileEntitySpore te = (TileEntitySpore) world.getTileEntity(x, y, z);
+			if(te!=null && te.getBlockId() != Block.getIdFromBlock(this)){
+				Block b = Block.getBlockById(te.getBlockId());
+				if(b!=null && !b.equals(Blocks.air)){
+					b.dropBlockAsItem(world, x, y, z, meta, 0);
+				} 
+			}
+		}
+	}
+	
+	@Override
 	 public void dropBlockAsItemWithChance(World world, int x, int y, int z, int meta, float chance, int extra){
-		TileEntitySpore te = (TileEntitySpore) world.getTileEntity(x, y, z);
-		Block.getBlockById(te.getBlockId()).dropBlockAsItemWithChance(world, x, y, z, meta, chance, extra);
-    }
+	}
 }

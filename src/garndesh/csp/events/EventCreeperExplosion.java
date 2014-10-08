@@ -23,7 +23,7 @@ public class EventCreeperExplosion {
 	public void LivingAttackEvent(LivingAttackEvent event) {
 		if (event.source.getEntity() instanceof EntityCreeper
 				&& event.source.isExplosion()) {
-			FMLLog.info("Living Attacked event attacking entity is: Creeper");
+			//FMLLog.info("Living Attacked event attacking entity is: Creeper");
 			EntityCreeper parent = (EntityCreeper) event.source.getEntity();
 			World world = parent.worldObj;
 			if (!world.isRemote) {
@@ -39,6 +39,7 @@ public class EventCreeperExplosion {
 							&& Block.getIdFromBlock(ModBlocks.blockSpore) != block
 							&& world.getTileEntity(x, y, z) == null) {
 						int meta = world.getBlockMetadata(x, y, z);
+						FMLLog.info("Spore at: "+x+","+y+","+z);
 						world.setBlock(x, y, z, ModBlocks.blockSpore);
 						world.setBlockMetadataWithNotify(x, y, z, meta, 2);
 						TileEntitySpore tileEntity = (TileEntitySpore) world

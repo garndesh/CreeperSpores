@@ -2,7 +2,9 @@ package garndesh.csp.tileentity;
 
 import garndesh.csp.blocks.ModBlocks;
 import garndesh.csp.entity.EntityBabyCreeper;
+import garndesh.csp.lib.Constants;
 
+import java.util.List;
 import java.util.Random;
 
 import cpw.mods.fml.common.FMLLog;
@@ -15,6 +17,7 @@ import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 
 public class TileEntitySpore extends TileEntity {
 
@@ -38,12 +41,15 @@ public class TileEntitySpore extends TileEntity {
 
 	@Override
 	public void updateEntity(){
-		if(rand.nextInt(2000)==0){ 
+		if(rand.nextInt(Constants.SPORE_SPAWNRATE)==0){ 
 			int x = (int) (this.xCoord + rand.nextInt(10)-5);
 			int y = (int) (this.yCoord + rand.nextInt(5));
 			int z = (int) (this.zCoord + rand.nextInt(10)-5);
+			int creepers = worldObj.getEntitiesWithinAABB(EntityCreeper.class, AxisAlignedBB.getBoundingBox(x-10, y-10, z-10, x+10, y+10, z+10)).size();
+			int babys = worldObj.getEntitiesWithinAABB(EntityBabyCreeper.class, AxisAlignedBB.getBoundingBox(x-10, y-10, z-10, x+10, y+10, z+10)).size();
+			
 			//FMLLog.info("Trying to spawn creeper @ "+x+":"+y+":"+z);
-			if(worldObj.isAirBlock(x, y, z) && worldObj.isAirBlock(x, y+1, z) && !worldObj.isRemote){
+			if(worldObj.isAirBlock(x, y, z) && worldObj.isAirBlock(x, y+1, z) && !worldObj.isRemote && creepers+babys < 15){
 				EntityBabyCreeper creeper = new EntityBabyCreeper(worldObj);
 				creeper.setLocationAndAngles(x+0.5, y, z+0.5, 0, 0);
 				

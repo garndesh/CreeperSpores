@@ -1,21 +1,19 @@
 [
 {
-"modid": "CSP",
-"name": "Creeper Spores",
-"description": "Creepers are worse than ever",
-"version": "project.version",
-"mcversion": "project.minecraft.version",
-"url": "",
-"updateUrl": "",
-"authorList": [
-"garndesh"
-],
-"credits": "garndesh",
-"logoFile": "",
-"screenshots": [
-],
-"parent":"",
-"dependencies": [
-]
-}
+	"modid": "CSP",
+	"name": "Creeper Spores",
+	"description": "Creepers are worse than ever",
+	"version": ${version},
+	"mcversion": ${mcversion},
+	"url": "",
+	"updateUrl": "",
+	"authorList": [
+		"garndesh"
+	],
+	"credits": "garndesh",
+	"logoFile": "",
+	"screenshots": [],
+	"parent":"",
+	"dependencies": []
+	}
 ]

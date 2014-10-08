@@ -23,6 +23,7 @@ archivesBaseName = "csp"
 
 minecraft {
     version = "1.7.10-10.13.1.1217"
+	runDir = "eclipse"
     //assetDir = "eclipse/assets"
 }
 
@@ -49,7 +50,6 @@ processResources
         
     // copy everything else, thats not the mcmod.info
     from(sourceSets.main.resources.srcDirs) {
-        //include '*'
-		exclude '*/*.info'
+		exclude 'mcmod.info'
     }
 }

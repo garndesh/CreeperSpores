@@ -69,7 +69,7 @@ public class CreeperSpores {
 		//register entities
 		int id = EntityRegistry.findGlobalUniqueEntityId();
 		//EntityRegistry.registerModEntity(EntityBabyCreeper.class, "Baby Creeper", id, instance, 0, 20, true);
-		EntityRegistry.registerGlobalEntityID(EntityBabyCreeper.class, "BabyCreeper", id, 0xff00ff, 0x00ff00);
+		EntityRegistry.registerGlobalEntityID(EntityBabyCreeper.class, Strings.RECOURCE_PREFIX+"BabyCreeper", id, 0xff00ff, 0x00ff00);
 		
 		proxy.registerRenderers();
 		

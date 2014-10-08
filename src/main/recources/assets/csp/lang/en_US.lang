@@ -3,3 +3,7 @@ item.csp:CreeperBall.name=Creeper Ball
 
 # Block names
 tile.csp:BlockSpore.name=Spore Block
+
+
+# Minion localization
+entity.csp:BabyCreeper.name=Baby Creeper

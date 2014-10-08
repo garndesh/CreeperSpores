@@ -1,15 +1,15 @@
 package garndesh.csp.client.renderer.entity;
 
-import net.minecraft.client.model.ModelBase;
-import net.minecraft.client.model.ModelCreeper;
+import org.lwjgl.opengl.GL11;
+
 import net.minecraft.client.renderer.entity.RenderCreeper;
+import net.minecraft.entity.monster.EntityCreeper;
 
 public class RendererBabyCreeper extends RenderCreeper {
 
-	protected ModelBase creeperModel = new ModelCreeper(1.0F);
+	 protected void preRenderCallback(EntityCreeper entity, float timeTick){
+	        super.preRenderCallback(entity, timeTick);
+	        GL11.glScalef(0.5F, 0.5F, 0.5F);
+	    }
 	
-	public RendererBabyCreeper(){
-		super();
-		
-	}
 }

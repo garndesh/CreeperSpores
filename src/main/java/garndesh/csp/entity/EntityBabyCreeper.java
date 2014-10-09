@@ -6,10 +6,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import net.minecraft.entity.ai.EntityAIAttackOnCollide;
+import net.minecraft.entity.ai.EntityAIAvoidEntity;
 import net.minecraft.entity.ai.EntityAIBase;
 import net.minecraft.entity.ai.EntityAICreeperSwell;
 import net.minecraft.entity.ai.EntityAITasks.EntityAITaskEntry;
 import net.minecraft.entity.monster.EntityCreeper;
+import net.minecraft.entity.passive.EntityOcelot;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 
 public class EntityBabyCreeper extends EntityCreeper {
@@ -30,6 +33,8 @@ public class EntityBabyCreeper extends EntityCreeper {
 		EntityAITaskEntry taskEntry = (EntityAITaskEntry)(this.targetTasks.taskEntries.get(1));
 		this.targetTasks.removeTask(taskEntry.action);
 		this.setSize(0.75F, 0.4F);
+
+        this.tasks.addTask(2, new EntityAIAvoidEntity(this, EntityPlayer.class, 12.0F, 1.3D, 1.6D));
 	}
 	
 	@Override

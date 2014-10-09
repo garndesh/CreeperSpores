@@ -45,8 +45,8 @@ public class TileEntitySpore extends TileEntity {
 			int x = (int) (this.xCoord + rand.nextInt(10)-5);
 			int y = (int) (this.yCoord + rand.nextInt(5));
 			int z = (int) (this.zCoord + rand.nextInt(10)-5);
-			int creepers = worldObj.getEntitiesWithinAABB(EntityCreeper.class, AxisAlignedBB.getBoundingBox(x-10, y-10, z-10, x+10, y+10, z+10)).size();
-			int babys = worldObj.getEntitiesWithinAABB(EntityBabyCreeper.class, AxisAlignedBB.getBoundingBox(x-10, y-10, z-10, x+10, y+10, z+10)).size();
+			int creepers = worldObj.getEntitiesWithinAABB(EntityCreeper.class, AxisAlignedBB.getBoundingBox(x-20, y-10, z-20, x+20, y+10, z+20)).size();
+			int babys = worldObj.getEntitiesWithinAABB(EntityBabyCreeper.class, AxisAlignedBB.getBoundingBox(x-20, y-10, z-20, x+20, y+10, z+20)).size();
 			
 			//FMLLog.info("Trying to spawn creeper @ "+x+":"+y+":"+z);
 			if(worldObj.isAirBlock(x, y, z) && worldObj.isAirBlock(x, y+1, z) && !worldObj.isRemote && creepers+babys < 15){

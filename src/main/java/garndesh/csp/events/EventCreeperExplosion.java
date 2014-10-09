@@ -51,9 +51,15 @@ public class EventCreeperExplosion {
 				}
 				if (event.entity != null
 						&& event.entity instanceof EntityPlayer) {
-					// FMLLog.info("Attacking entity: "+event.entity.getEntityId());
-					event.entity.getEntityData().setBoolean(Strings.INFECTED_TAG, true);
-					CreeperSpores.instance.enforcer.addInfectedPlayer((EntityPlayer) event.entity);
+					int immume = event.entity.getEntityData().getInteger(Strings.IMMUME_TAG);
+					if(immume>=0){
+						// FMLLog.info("Attacking entity: "+event.entity.getEntityId());
+						event.entity.getEntityData().setBoolean(Strings.INFECTED_TAG, true);
+						CreeperSpores.instance.enforcer.addInfectedPlayer((EntityPlayer) event.entity);
+					} else {
+						immume--;
+						event.entity.getEntityData().setInteger(Strings.IMMUME_TAG, immume);
+					}
 				}
 			}
 		}

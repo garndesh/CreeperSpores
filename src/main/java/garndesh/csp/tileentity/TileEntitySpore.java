@@ -4,10 +4,8 @@ import garndesh.csp.blocks.ModBlocks;
 import garndesh.csp.entity.EntityBabyCreeper;
 import garndesh.csp.lib.Constants;
 
-import java.util.List;
 import java.util.Random;
 
-import cpw.mods.fml.common.FMLLog;
 import net.minecraft.block.Block;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.nbt.NBTTagCompound;
@@ -18,6 +16,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.potion.PotionEffect;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.AxisAlignedBB;
+import cpw.mods.fml.common.FMLLog;
 
 public class TileEntitySpore extends TileEntity {
 

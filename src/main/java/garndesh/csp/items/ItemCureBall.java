@@ -82,6 +82,7 @@ public class ItemCureBall extends ItemFood {
             }
 	        player.getEntityData().setBoolean(Strings.INFECTED_TAG, false);
             CreeperSpores.instance.enforcer.removeInfectedPlayer(player);
+            player.getEntityData().setInteger(Strings.IMMUME_TAG, Constants.IMMUME_DURATION);
         }
     }
 }

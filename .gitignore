@@ -4,6 +4,7 @@
 
 # But exclude these files
 !.gitignore
+!LICENSE.txt
 !build.gradle
 !/src/
 
